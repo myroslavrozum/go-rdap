@@ -1,0 +1,294 @@
+{
+  "rdapConformance" : [ "rdap_level_0", "cidr0", "arin_originas0" ],
+  "notices" : [ {
+    "title" : "Terms of Service",
+    "description" : [ "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use" ],
+    "links" : [ {
+      "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+      "rel" : "about",
+      "type" : "text/html",
+      "href" : "https://www.arin.net/resources/registry/whois/tou/"
+} ]
+  }, 
+  {
+    "title" : "Whois Inaccuracy Reporting",
+    "description" : [ "If you see inaccuracies in the results, please visit: " ],
+    "links" : [ {
+      "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+      "rel" : "about",
+      "type" : "text/html",
+      "href" : "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+    } ]
+  }, {
+    "title" : "Copyright Notice",
+    "description" : [ "Copyright 1997-2020, American Registry for Internet Numbers, Ltd." ]
+  } ],
+  "handle" : "NET-173-64-0-0-1",
+  "startAddress" : "173.64.0.0",
+  "endAddress" : "173.79.255.255",
+  "ipVersion" : "v4",
+  "name" : "VIS-BLOCK",
+  "type" : "DIRECT ALLOCATION",
+  "parentHandle" : "NET-173-0-0-0-0",
+  "events" : [ {
+    "eventAction" : "last changed",
+    "eventDate" : "2016-08-18T13:10:52-04:00"
+  }, {
+    "eventAction" : "registration",
+    "eventDate" : "2008-08-11T14:36:35-04:00"
+  } ],
+  "links" : [ {
+    "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+    "rel" : "self",
+    "type" : "application/rdap+json",
+    "href" : "https://rdap.arin.net/registry/ip/173.64.0.0"
+  }, {
+    "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+    "rel" : "alternate",
+    "type" : "application/xml",
+    "href" : "https://whois.arin.net/rest/net/NET-173-64-0-0-1"
+  } ],
+  "entities" : [ {
+    "handle" : "MCICS",
+    "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "fn", { }, "text", "MCI Communications Services, Inc. d/b/a Verizon Business" ], [ "adr", {
+      "label" : "22001 Loudoun County Pkwy\nAshburn\nVA\n20147\nUnited States"
+    }, "text", [ "", "", "", "", "", "", "" ] ], [ "kind", { }, "text", "org" ] ] ],
+    "roles" : [ "registrant" ],
+    "links" : [ {
+      "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+      "rel" : "self",
+      "type" : "application/rdap+json",
+      "href" : "https://rdap.arin.net/registry/entity/MCICS"
+    }, {
+      "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+      "rel" : "alternate",
+      "type" : "application/xml",
+      "href" : "https://whois.arin.net/rest/org/MCICS"
+    } ],
+    "events" : [ {
+      "eventAction" : "last changed",
+      "eventDate" : "2019-10-16T12:50:03-04:00"
+    }, {
+      "eventAction" : "registration",
+      "eventDate" : "2006-05-30T14:02:27-04:00"
+    } ],
+    "entities" : [ {
+      "handle" : "SWIPP9-ARIN",
+      "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "adr", {
+        "label" : "22001 Loudoun County Pkwy\nAshburn\nVA\n20147\nUnited States"
+      }, "text", [ "", "", "", "", "", "", "" ] ], [ "fn", { }, "text", "SWIPPER" ], [ "org", { }, "text", "SWIPPER" ], [ "kind", { }, "text", "group" ], [ "email", { }, "text", "stephen.r.middleton@verizon.com" ], [ "email", { }, "text", "swipper@verizon.com" ], [ "tel", {
+        "type" : [ "work", "voice" ]
+      }, "text", "+1-800-900-0241" ] ] ],
+      "roles" : [ "technical" ],
+      "links" : [ {
+        "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+        "rel" : "self",
+        "type" : "application/rdap+json",
+        "href" : "https://rdap.arin.net/registry/entity/SWIPP9-ARIN"
+      }, {
+        "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+        "rel" : "alternate",
+        "type" : "application/xml",
+        "href" : "https://whois.arin.net/rest/poc/SWIPP9-ARIN"
+      } ],
+      "events" : [ {
+        "eventAction" : "last changed",
+        "eventDate" : "2019-07-08T17:55:49-04:00"
+      }, {
+        "eventAction" : "registration",
+        "eventDate" : "2011-11-30T11:24:25-05:00"
+      } ],
+      "status" : [ "validated" ],
+      "port43" : "whois.arin.net",
+      "objectClassName" : "entity"
+    }, {
+      "handle" : "ABUSE5603-ARIN",
+      "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "adr", {
+        "label" : "22001 Loudoun County Parkway\nAsburn\nVA\n20147\nUnited States"
+      }, "text", [ "", "", "", "", "", "", "" ] ], [ "fn", { }, "text", "Abuse" ], [ "org", { }, "text", "Abuse" ], [ "kind", { }, "text", "group" ], [ "email", { }, "text", "abuse@verizon.net" ], [ "tel", {
+        "type" : [ "work", "voice" ]
+      }, "text", "+1-800-900-0241" ] ] ],
+      "roles" : [ "abuse" ],
+      "links" : [ {
+        "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+        "rel" : "self",
+        "type" : "application/rdap+json",
+        "href" : "https://rdap.arin.net/registry/entity/ABUSE5603-ARIN"
+      }, {
+        "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+        "rel" : "alternate",
+        "type" : "application/xml",
+        "href" : "https://whois.arin.net/rest/poc/ABUSE5603-ARIN"
+      } ],
+      "events" : [ {
+        "eventAction" : "last changed",
+        "eventDate" : "2019-07-08T17:56:12-04:00"
+      }, {
+        "eventAction" : "registration",
+        "eventDate" : "2016-08-18T13:07:50-04:00"
+      } ],
+      "status" : [ "validated" ],
+      "port43" : "whois.arin.net",
+      "objectClassName" : "entity"
+    }, {
+      "handle" : "SWIPP-ARIN",
+      "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "adr", {
+        "label" : "22001 Loudoun County Parkway\nAshburn\nVA\n20147\nUnited States"
+      }, "text", [ "", "", "", "", "", "", "" ] ], [ "fn", { }, "text", "swipper" ], [ "org", { }, "text", "swipper" ], [ "kind", { }, "text", "group" ], [ "email", { }, "text", "swipper@verizonbusiness.com" ], [ "tel", {
+        "type" : [ "work", "voice" ]
+      }, "text", "+1-800-900-0241" ] ] ],
+      "roles" : [ "technical" ],
+      "remarks" : [ {
+        "title" : "Registration Comments",
+        "description" : [ "ADDRESSES WITHIN THIS BLOCK ARE NON-PORTABLE" ]
+      } ],
+      "links" : [ {
+        "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+        "rel" : "self",
+        "type" : "application/rdap+json",
+        "href" : "https://rdap.arin.net/registry/entity/SWIPP-ARIN"
+      }, {
+        "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+        "rel" : "alternate",
+        "type" : "application/xml",
+        "href" : "https://whois.arin.net/rest/poc/SWIPP-ARIN"
+      } ],
+      "events" : [ {
+        "eventAction" : "last changed",
+        "eventDate" : "2019-07-08T17:55:39-04:00"
+      }, {
+        "eventAction" : "registration",
+        "eventDate" : "2002-08-24T08:16:46-04:00"
+      } ],
+      "status" : [ "validated" ],
+      "port43" : "whois.arin.net",
+      "objectClassName" : "entity"
+    }, {
+      "handle" : "BROCK287-ARIN",
+      "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "adr", {
+        "label" : "22001 Loudoun County Pkwy\nAshburn\nVA\n20147\nUnited States"
+      }, "text", [ "", "", "", "", "", "", "" ] ], [ "fn", { }, "text", "Brant Brockdorff" ], [ "n", { }, "text", [ "Brockdorff", "Brant", "", "", "" ] ], [ "kind", { }, "text", "individual" ], [ "email", { }, "text", "brant.brockdorff@one.verizon.com" ], [ "tel", {
+        "type" : [ "work", "voice" ]
+      }, "text", "+1-800-900-0241" ] ] ],
+      "roles" : [ "technical" ],
+      "links" : [ {
+        "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+        "rel" : "self",
+        "type" : "application/rdap+json",
+        "href" : "https://rdap.arin.net/registry/entity/BROCK287-ARIN"
+      }, {
+        "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+        "rel" : "alternate",
+        "type" : "application/xml",
+        "href" : "https://whois.arin.net/rest/poc/BROCK287-ARIN"
+      } ],
+      "events" : [ {
+        "eventAction" : "last changed",
+        "eventDate" : "2019-09-03T11:39:36-04:00"
+      }, {
+        "eventAction" : "registration",
+        "eventDate" : "2019-09-03T11:39:36-04:00"
+      } ],
+      "status" : [ "validated" ],
+      "port43" : "whois.arin.net",
+      "objectClassName" : "entity"
+    }, {
+      "handle" : "VIS1-ARIN",
+      "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "adr", {
+        "label" : "1880 Campus Commons Dr\nReston\nVA\n20191\nUnited States"
+      }, "text", [ "", "", "", "", "", "", "" ] ], [ "fn", { }, "text", "Verizon Internet Services" ], [ "org", { }, "text", "Verizon Internet Services" ], [ "kind", { }, "text", "group" ], [ "email", { }, "text", "IPMGMT@verizon.com" ], [ "email", { }, "text", "stephen.r.middleton@verizon.com" ], [ "tel", {
+        "type" : [ "work", "voice" ]
+      }, "text", "800-243-6994" ] ] ],
+      "roles" : [ "administrative" ],
+      "links" : [ {
+        "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+        "rel" : "self",
+        "type" : "application/rdap+json",
+        "href" : "https://rdap.arin.net/registry/entity/VIS1-ARIN"
+      }, {
+        "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+        "rel" : "alternate",
+        "type" : "application/xml",
+        "href" : "https://whois.arin.net/rest/poc/VIS1-ARIN"
+      } ],
+      "events" : [ {
+        "eventAction" : "last changed",
+        "eventDate" : "2019-07-08T17:55:31-04:00"
+      }, {
+        "eventAction" : "registration",
+        "eventDate" : "2002-11-06T17:57:04-05:00"
+      } ],
+      "status" : [ "validated" ],
+      "port43" : "whois.arin.net",
+      "objectClassName" : "entity"
+    }, {
+      "handle" : "ABUSE3-ARIN",
+      "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "adr", {
+        "label" : "22001 Loudoun County Parkway\nAshburn\nVA\n20147\nUnited States"
+      }, "text", [ "", "", "", "", "", "", "" ] ], [ "fn", { }, "text", "abuse" ], [ "org", { }, "text", "abuse" ], [ "kind", { }, "text", "group" ], [ "email", { }, "text", "abuse-mail@verizonbusiness.com" ], [ "tel", {
+        "type" : [ "work", "voice" ]
+      }, "text", "+1-800-900-0241" ] ] ],
+      "roles" : [ "abuse" ],
+      "links" : [ {
+        "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+        "rel" : "self",
+        "type" : "application/rdap+json",
+        "href" : "https://rdap.arin.net/registry/entity/ABUSE3-ARIN"
+      }, {
+        "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+        "rel" : "alternate",
+        "type" : "application/xml",
+        "href" : "https://whois.arin.net/rest/poc/ABUSE3-ARIN"
+      } ],
+      "events" : [ {
+        "eventAction" : "last changed",
+        "eventDate" : "2019-07-08T17:56:00-04:00"
+      }, {
+        "eventAction" : "registration",
+        "eventDate" : "2002-08-24T08:09:34-04:00"
+      } ],
+      "status" : [ "validated" ],
+      "port43" : "whois.arin.net",
+      "objectClassName" : "entity"
+    } ],
+    "port43" : "whois.arin.net",
+    "objectClassName" : "entity"
+  }, {
+    "handle" : "ABUSE5603-ARIN",
+    "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "adr", {
+      "label" : "22001 Loudoun County Parkway\nAsburn\nVA\n20147\nUnited States"
+    }, "text", [ "", "", "", "", "", "", "" ] ], [ "fn", { }, "text", "Abuse" ], [ "org", { }, "text", "Abuse" ], [ "kind", { }, "text", "group" ], [ "email", { }, "text", "abuse@verizon.net" ], [ "tel", {
+      "type" : [ "work", "voice" ]
+    }, "text", "+1-800-900-0241" ] ] ],
+    "roles" : [ "abuse" ],
+    "links" : [ {
+      "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+      "rel" : "self",
+      "type" : "application/rdap+json",
+      "href" : "https://rdap.arin.net/registry/entity/ABUSE5603-ARIN"
+    }, {
+      "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
+      "rel" : "alternate",
+      "type" : "application/xml",
+      "href" : "https://whois.arin.net/rest/poc/ABUSE5603-ARIN"
+    } ],
+    "events" : [ {
+      "eventAction" : "last changed",
+      "eventDate" : "2019-07-08T17:56:12-04:00"
+    }, {
+      "eventAction" : "registration",
+      "eventDate" : "2016-08-18T13:07:50-04:00"
+    } ],
+    "status" : [ "validated" ],
+    "port43" : "whois.arin.net",
+    "objectClassName" : "entity"
+  } ],
+  "port43" : "whois.arin.net",
+  "status" : [ "active" ],
+  "objectClassName" : "ip network",
+  "cidr0_cidrs" : [ {
+    "v4prefix" : "173.64.0.0",
+    "length" : 12
+  } ],
+  "arin_originas0_originautnums" : [ ]
+}
