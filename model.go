@@ -43,12 +43,12 @@ type remark struct {
 type Entity struct {
 	Handle          string        `json:"handle"`
 	VcardArrayRaw   []interface{} `json:"vcardArray"`
-	VcardArray      []vCard
-	Entities        []Entity `json:"entities"`
-	Port43          string   `json:"port43"`
-	Status          []string `json:"status"`
+	Entities        []Entity      `json:"entities"`
+	Port43          string        `json:"port43"`
+	Status          []string      `json:"status"`
+	Remarks         []remark      `json:"remarks"`
 	ObjectClassName string
-	Remarks         []remark `json:"remarks"`
+	VcardArray      []vCard
 }
 
 //Answer ...
