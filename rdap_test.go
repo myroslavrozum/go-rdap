@@ -17,10 +17,12 @@ func Test_query(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			"one",
-			args{"173.70.134.162"},
-			net.IP{173, 70, 134, 162},
-			false,
+			name:    "one",
+			want:    net.IP{173, 70, 134, 162},
+			wantErr: false,
+			//args:    args{"173.70.134.162"},
+			//args: args{"193.19.84.177"},
+			args: args{"178.210.203.50"},
 		},
 	}
 	for _, tt := range tests {
@@ -30,7 +32,6 @@ func Test_query(t *testing.T) {
 				t.Errorf("Bootstrap() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
-
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("query() = %v, want %v", got, tt.want)
 			}

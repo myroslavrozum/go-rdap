@@ -50,9 +50,14 @@
   } ],
   "entities" : [ {
     "handle" : "MCICS",
-    "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "fn", { }, "text", "MCI Communications Services, Inc. d/b/a Verizon Business" ], [ "adr", {
-      "label" : "22001 Loudoun County Pkwy\nAshburn\nVA\n20147\nUnited States"
-    }, "text", [ "", "", "", "", "", "", "" ] ], [ "kind", { }, "text", "org" ] ] ],
+    "vcardArray" : [
+      "vcard",
+      [
+        [ "version", { }, "text", "4.0" ], 
+        [ "fn", { }, "text", "MCI Communications Services, Inc. d/b/a Verizon Business" ],
+        [ "adr", {"label" : "22001 Loudoun County Pkwy\nAshburn\nVA\n20147\nUnited States" }, "text", [ "", "", "", "", "", "", "" ] ], [ "kind", { }, "text", "org" ] 
+      ]
+    ],
     "roles" : [ "registrant" ],
     "links" : [ {
       "value" : "https://rdap.arin.net/registry/ip/173.70.134.162",
