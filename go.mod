@@ -1,3 +1,3 @@
-module myroslavrozum/go-rdap
+module gordap
 
 go 1.14

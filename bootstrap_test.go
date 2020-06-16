@@ -1,4 +1,4 @@
-package rdap
+package gordap
 
 import (
 	"reflect"

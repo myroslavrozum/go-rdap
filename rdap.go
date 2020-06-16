@@ -1,4 +1,4 @@
-package rdap
+package gordap
 
 import (
 	"encoding/json"
@@ -26,18 +26,25 @@ func rdap(ipaddr string) (net.IP, error) {
 		endpoint += "ip/" + ipaddr
 		body, _ := query(endpoint)
 
-		var ra RDAPAnswer
+		var ra Answer
 		json.Unmarshal(body, &ra)
 		for _, e := range ra.Entities {
-			if e.VcardArray != nil {
-				for _, vc := range e.VcardArray {
-					for k, v := range vc {
-						fmt.Printf("%-10v:%-10v\n", k, v)
-					}
-				}
-				fmt.Println("=======================")
-			}
+			printVcards(&e)
 		}
 	}
 	return net.ParseIP(ipaddr), nil
+}
+
+func printVcards(e *Entity) {
+	if (*e).VcardArray != nil {
+		for _, vc := range (*e).VcardArray {
+			for k, v := range vc {
+				fmt.Printf("%-10v:  %-10v\n", k, v)
+			}
+		}
+		fmt.Println("=======================")
+	}
+	for _, tmpE := range (*e).Entities {
+		printVcards(&tmpE)
+	}
 }
