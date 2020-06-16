@@ -33,23 +33,32 @@ type Entity struct {
 func processUnmarshaledEntity(input *map[string]interface{}) *Entity {
 	var tmpEntity Entity
 
+	//Unmarshalling Entity field-by-field
+	//handle
 	if _, exists := (*input)[`handle`]; exists {
 		tmpEntity.Handle = (*input)[`handle`].(string)
 	}
+
+	//vcardArray
 	if _, exists := (*input)[`vcardArray`]; exists {
 		tmpEntity.VcardArrayRaw = (*input)[`vcardArray`].([]interface{})
 	}
+
+	//entities - recursive
 	if _, exists := (*input)[`entities`]; exists {
 		for _, i := range (*input)[`entities`].([]interface{}) {
 			i := i.(map[string]interface{})
 			tmpEntity.Entities = append(tmpEntity.Entities, *processUnmarshaledEntity(&i))
 		}
-
 		tmpEntity.EntitiesRaw = (*input)[`entities`].([]interface{})
 	}
+
+	//port43
 	if _, exists := (*input)[`port43`]; exists {
 		tmpEntity.Port43 = (*input)[`port43`].(string)
 	}
+
+	//status
 	if _, exists := (*input)[`status`]; exists {
 		tEs := (*input)[`status`].([]interface{})
 		arr := make([]string, len(tEs))
@@ -58,6 +67,8 @@ func processUnmarshaledEntity(input *map[string]interface{}) *Entity {
 		}
 		tmpEntity.Status = arr
 	}
+
+	//remarks
 	if _, exists := (*input)[`remarks`]; exists {
 		for _, i := range (*input)[`remarks`].([]interface{}) {
 			i := i.(map[string]interface{})
@@ -71,15 +82,31 @@ func processUnmarshaledEntity(input *map[string]interface{}) *Entity {
 			tmpEntity.Remarks = append(tmpEntity.Remarks, r)
 		}
 	}
+
+	//objectClassName
 	if _, exists := (*input)[`objectClassName`]; exists {
 		tmpEntity.ObjectClassName = (*input)[`objectClassName`].(string)
 	}
 
+	//processRawVcard. Converting raw vCard to dictinary an assigining it ti VcardArray
 	if len(tmpEntity.VcardArrayRaw) > 0 {
 		tmpEntity.processRawVcard()
 	}
 
 	return &tmpEntity
+}
+
+//Clone clones `src` to `this` by value
+func (e *Entity) Clone(src *Entity) {
+	(*e).Handle = (*src).Handle
+	(*e).VcardArrayRaw = (*src).VcardArrayRaw
+	(*e).EntitiesRaw = (*src).EntitiesRaw
+	(*e).Entities = (*src).Entities
+	(*e).Port43 = (*src).Port43
+	(*e).Status = (*src).Status
+	(*e).Remarks = (*src).Remarks
+	(*e).ObjectClassName = (*src).ObjectClassName
+	(*e).VcardArray = (*src).VcardArray
 }
 
 //UnmarshalJSON Custom Unmarshal Entity and processing VCardRaw into VcardArray
@@ -90,16 +117,7 @@ func (e *Entity) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	ent := processUnmarshaledEntity(&tmpEntity)
-	(*e).Handle = (*ent).Handle
-	(*e).VcardArrayRaw = (*ent).VcardArrayRaw
-	(*e).EntitiesRaw = (*ent).EntitiesRaw
-	(*e).Entities = (*ent).Entities
-	(*e).Port43 = (*ent).Port43
-	(*e).Status = (*ent).Status
-	(*e).Remarks = (*ent).Remarks
-	(*e).ObjectClassName = (*ent).ObjectClassName
-	(*e).VcardArray = (*ent).VcardArray
-
+	(*e).Clone(ent)
 	return nil
 }
 
