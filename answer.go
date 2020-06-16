@@ -1,6 +1,6 @@
 package gordap
 
-//Answer ...
+//Answer Answer from RDAP server
 type Answer struct {
 	RdapConformance []string `json:"rdapConformance"`
 	Notices         []Notice `json:"notices"`

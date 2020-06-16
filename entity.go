@@ -8,6 +8,15 @@ import (
 	"unicode/utf8"
 )
 
+type remark struct {
+	Title       string   `json:"title"`
+	Description []string `json:"description"`
+}
+
+//https://tools.ietf.org/html/rfc6350
+//https://mariadesouza.com/2017/09/07/custom-unmarshal-json-in-golang/
+type vCard map[string]string
+
 //Entity from RFC7482
 type Entity struct {
 	Handle          string        `json:"handle"`
@@ -51,7 +60,6 @@ func processUnmarshaledEntity(input *map[string]interface{}) *Entity {
 	}
 	if _, exists := (*input)[`remarks`]; exists {
 		for _, i := range (*input)[`remarks`].([]interface{}) {
-			log.Println(i)
 			i := i.(map[string]interface{})
 			var r remark
 			if _, exists := i[`Description`]; exists {
@@ -79,7 +87,6 @@ func (e *Entity) UnmarshalJSON(data []byte) error {
 	var tmpEntity map[string]interface{}
 
 	if err := json.Unmarshal(data, &tmpEntity); err != nil {
-		log.Printf("%s (%T): %v\n", string(data), data, err.Error())
 		return err
 	}
 	ent := processUnmarshaledEntity(&tmpEntity)
