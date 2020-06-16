@@ -1,5 +1,13 @@
 package rdap
 
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+	"strings"
+	"unicode/utf8"
+)
+
 //Link ...
 type Link struct {
 	Value string `json:"value"`
@@ -28,12 +36,6 @@ type Event struct {
 //https://mariadesouza.com/2017/09/07/custom-unmarshal-json-in-golang/
 type vCard map[string]string
 
-type vCard_z struct {
-	name       string
-	attributes map[string]string
-	text       string
-}
-
 type remark struct {
 	Title       string   `json:"title"`
 	Description []string `json:"description"`
@@ -43,16 +45,134 @@ type remark struct {
 type Entity struct {
 	Handle          string        `json:"handle"`
 	VcardArrayRaw   []interface{} `json:"vcardArray"`
-	Entities        []Entity      `json:"entities"`
+	EntitiesRaw     []interface{} `json:"entities"`
 	Port43          string        `json:"port43"`
 	Status          []string      `json:"status"`
 	Remarks         []remark      `json:"remarks"`
-	ObjectClassName string
+	ObjectClassName string        `json:"objectClassName"`
 	VcardArray      []vCard
+	Entities        []Entity
 }
 
-//Answer ...
-type Answer struct {
+func (e *Entity) UnmarshalJSON(data []byte) error {
+	var tmpEntity map[string]interface{}
+
+	if err := json.Unmarshal(data, &tmpEntity); err != nil {
+		log.Printf("%s (%T): %v\n", string(data), data, err.Error())
+		return err
+	}
+
+	if _, exists := tmpEntity[`handle`]; exists {
+		(*e).Handle = tmpEntity[`handle`].(string)
+	}
+	if _, exists := tmpEntity[`vcardArray`]; exists {
+		(*e).VcardArrayRaw = tmpEntity[`vcardArray`].([]interface{})
+	}
+	if _, exists := tmpEntity[`entities`]; exists {
+		(*e).EntitiesRaw = tmpEntity[`entities`].([]interface{})
+	}
+	if _, exists := tmpEntity[`port43`]; exists {
+		(*e).Port43 = tmpEntity[`port43`].(string)
+	}
+	if _, exists := tmpEntity[`status`]; exists {
+		arr := make([]string, len(tmpEntity[`status`].([]interface{})))
+		for _, v := range tmpEntity[`status`].([]interface{}) {
+			arr = append(arr, v.(string))
+		}
+		(*e).Status = arr
+	}
+	if _, exists := tmpEntity[`remarks`]; exists {
+		(*e).Remarks = tmpEntity[`remarks`].([]remark)
+	}
+	if _, exists := tmpEntity[`objectClassName`]; exists {
+		(*e).ObjectClassName = tmpEntity[`objectClassName`].(string)
+	}
+
+	if len((*e).VcardArrayRaw) > 0 {
+		(*e).processRawVcard()
+	}
+
+	for _, entTmp := range (*e).EntitiesRaw {
+		log.Println(entTmp)
+	}
+	return nil
+}
+
+func (e *Entity) processRawVcard() {
+	if len((*e).VcardArrayRaw) < 2 {
+		log.Println((*e).VcardArrayRaw)
+		return
+	}
+
+	if (*e).VcardArrayRaw[0] != `vcard` {
+		return
+	}
+
+	vc := make(vCard, len((*e).VcardArrayRaw))
+
+	for _, entry := range (*e).VcardArrayRaw[1].([]interface{}) {
+		k, v := processVcardEntry(entry.([]interface{}))
+		vc[k] = v
+	}
+	(*e).VcardArray = append((*e).VcardArray, vc)
+}
+
+func fixUtf(r rune) rune {
+	if r == utf8.RuneError {
+		return -1
+	}
+	return r
+}
+
+func processVcardEntry(vcEntry []interface{}) (string, string) {
+	key := vcEntry[0].(string)
+	value := make([]string, 0)
+
+	for _, vcLine := range vcEntry[1:] {
+		switch vcLine.(type) {
+		case string:
+			kv := vcLine.(string)
+			if kv == `text` {
+				continue
+			}
+			kv = strings.Replace(kv, "\n", ", ", -1)
+			value = append(value, kv)
+
+		case []string:
+			kv := strings.Join(vcLine.([]string), " ")
+			value = append(value, kv)
+
+		case map[string]interface{}:
+			kv := vcLine.(map[string]interface{})
+			if len(kv) == 0 {
+				continue
+			}
+			for _, v := range kv {
+				switch v.(type) {
+				case string:
+					v := v.(string)
+					v = strings.Replace(v, "\n", ", ", -1)
+					value = append(value, v)
+				case []string:
+					v := strings.Join(v.([]string), " ")
+					value = append(value, v)
+				default:
+					value = append(value, fmt.Sprint(v))
+				}
+			}
+		default:
+			value = append(value, fmt.Sprint(vcLine))
+
+		}
+	}
+
+	val := strings.Map(fixUtf, strings.Join(value, ", "))
+
+	return key, val
+}
+
+//RDAPAnswer ...
+type RDAPAnswer struct {
 	RdapConformance []string `json:"rdapConformance"`
 	Notices         []Notice `json:"notices"`
 	Handle          string   `json:"handle"`
