@@ -98,15 +98,27 @@ func processUnmarshaledEntity(input *map[string]interface{}) *Entity {
 
 //Clone clones `src` to `this` by value
 func (e *Entity) Clone(src *Entity) {
-	(*e).Handle = (*src).Handle
-	(*e).VcardArrayRaw = (*src).VcardArrayRaw
-	(*e).EntitiesRaw = (*src).EntitiesRaw
-	(*e).Entities = (*src).Entities
-	(*e).Port43 = (*src).Port43
-	(*e).Status = (*src).Status
-	(*e).Remarks = (*src).Remarks
-	(*e).ObjectClassName = (*src).ObjectClassName
-	(*e).VcardArray = (*src).VcardArray
+	e.Handle = (*src).Handle
+	e.VcardArrayRaw = (*src).VcardArrayRaw
+	e.EntitiesRaw = (*src).EntitiesRaw
+	e.Entities = (*src).Entities
+	e.Port43 = (*src).Port43
+	e.Status = (*src).Status
+	e.Remarks = (*src).Remarks
+	e.ObjectClassName = (*src).ObjectClassName
+	e.VcardArray = (*src).VcardArray
+
+	/*
+		(*e).Handle = (*src).Handle
+		(*e).VcardArrayRaw = (*src).VcardArrayRaw
+		(*e).EntitiesRaw = (*src).EntitiesRaw
+		(*e).Entities = (*src).Entities
+		(*e).Port43 = (*src).Port43
+		(*e).Status = (*src).Status
+		(*e).Remarks = (*src).Remarks
+		(*e).ObjectClassName = (*src).ObjectClassName
+		(*e).VcardArray = (*src).VcardArray
+	*/
 }
 
 //UnmarshalJSON Custom Unmarshal Entity and processing VCardRaw into VcardArray

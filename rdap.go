@@ -18,8 +18,8 @@ func query(url string) ([]byte, error) {
 	return ioutil.ReadAll(resp.Body)
 }
 
-//https://rdap.arin.net/registry/ip/172.217.7.17
-func rdap(ipaddr string) (net.IP, error) {
+//Rdap https://rdap.arin.net/registry/ip/172.217.7.17
+func Rdap(ipaddr string) (net.IP, error) {
 	bsr, _ := BootstrapIP(ipaddr)
 
 	for _, endpoint := range bsr.HTTPS {

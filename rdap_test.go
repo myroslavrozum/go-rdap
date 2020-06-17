@@ -5,6 +5,28 @@ import (
 	"testing"
 )
 
+func Benchmark_query(b *testing.B) {
+	type args struct {
+		ipaddr string
+	}
+	test := struct {
+		name string
+		ip   string
+	}{
+		name: "one",
+		ip:   "173.70.134.162",
+		//ip: "178.210.203.50",
+		//ip: "181.1.140.66",
+		//ip: "193.19.84.177",
+		//ip: "94.100.180.200",
+	}
+
+	for i := 0; i < b.N; i++ {
+		Rdap(test.ip)
+	}
+	b.ReportAllocs()
+}
+
 func Test_query(t *testing.T) {
 	type args struct {
 		ipaddr string
@@ -32,7 +54,7 @@ func Test_query(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := rdap(tt.args.ipaddr)
+			got, err := Rdap(tt.args.ipaddr)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Bootstrap() error = %v, wantErr %v", err, tt.wantErr)
 				return
