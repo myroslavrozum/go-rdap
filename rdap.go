@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net"
 	"net/http"
 )
@@ -18,8 +19,8 @@ func query(url string) ([]byte, error) {
 	return ioutil.ReadAll(resp.Body)
 }
 
-//Rdap https://rdap.arin.net/registry/ip/172.217.7.17
-func Rdap(ipaddr string) (net.IP, error) {
+//Rdap2Vcard https://rdap.arin.net/registry/ip/172.217.7.17
+func Rdap2Vcard(ipaddr string) (net.IP, error) {
 	bsr, _ := BootstrapIP(ipaddr)
 
 	for _, endpoint := range bsr.HTTPS {
@@ -36,15 +37,16 @@ func Rdap(ipaddr string) (net.IP, error) {
 }
 
 func printVcards(e *Entity) {
-	if (*e).VcardArray != nil {
-		for _, vc := range (*e).VcardArray {
+	log.Println(e.Handle)
+	if e.VcardArray != nil {
+		for _, vc := range e.VcardArray {
 			for k, v := range vc {
-				fmt.Printf("%-10v:  %-10v\n", k, v)
+				log.Printf("%-10v:  %-10v\n", k, v)
 			}
 		}
-		fmt.Println("=======================")
+		log.Println("=======================")
 	}
-	for _, tmpE := range (*e).Entities {
+	for _, tmpE := range e.Entities {
 		printVcards(&tmpE)
 	}
 }
